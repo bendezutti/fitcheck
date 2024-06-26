@@ -1,3 +1,6 @@
+//Author: Benjamin Dezutti
+//Web Programming - Summer 2024
+
 import React from 'react'
 import HomeButton from './Buttons/HomeButton'
 import LoginButton from './Buttons/LoginButton'
