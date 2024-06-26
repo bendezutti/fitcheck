@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 const LoginButton = () => {
   return (
     <div>
-        <button> <Link to='/login'/> Login </button>
+      <Link to='/login'> 
+      <button> Login </button>
+      </Link>
     </div>
   )
 }
-
 export default LoginButton

@@ -1,9 +1,12 @@
 import React from 'react'
-import {Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 const HomeButton = () => {
   return (
     <div>
-        <button> <Link to='/home'/> Home </button>
+      <Link to='/home'>
+        <button> Home </button>
+      </Link>
     </div>
   )
 }

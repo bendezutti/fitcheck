@@ -2,13 +2,13 @@
 // Web Programming - Summer 2024
 
 import React from 'react'
-import LoginForm from '../components/LoginForm'
-const Login = () => {
+
+const LoginForm = () => {
   return (
     <div>
-      <LoginForm/>
+     <input placeholder='Username'/>
+     <input placeholder='Password'/>
     </div>
   )
 }
-
-export default Login
+export default LoginForm

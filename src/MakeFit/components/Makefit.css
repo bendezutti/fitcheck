@@ -1,0 +1,50 @@
+.fit{ 
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 2px;
+   flex-direction: column;
+   height: 50vh;
+}
+
+
+.shirt, .pants, .shoes {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border: solid black 1px; 
+   padding: 2px;
+   flex-direction: column;
+   width: 100px;
+   height: 100px;
+   margin: 10px;
+}
+
+.shirt button{
+   background-color: white;
+   border-radius: 2px;
+}
+.pants button{
+   background-color: white;
+   border-radius: 2px;
+}
+
+.shoes button{
+   background-color: white;
+   border-radius: 2px;
+}
+
+.shirt button:hover{ 
+   background-color: whitesmoke;
+   transition: background-color 0.3s;
+}
+
+.pants button:hover{ 
+   background-color: whitesmoke;
+   transition: background-color 0.3s;
+}
+
+.shoes button:hover{ 
+   background-color: whitesmoke;
+   transition: background-color 0.3s;
+}

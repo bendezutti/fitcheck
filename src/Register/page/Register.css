@@ -1,0 +1,23 @@
+.registerForm{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 75vh;
+    padding: 5px;
+}
+
+.registerEmail{ 
+    padding: 2px;
+    margin: 2px auto;
+}
+
+.registerUsername{ 
+    padding: 2px;
+    margin: 2px auto;
+}
+
+.registerPassword{ 
+    padding: 2px;
+    margin: 2px auto;
+}

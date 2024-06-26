@@ -1,0 +1,36 @@
+.navBar{ 
+    text-align: center;
+    background-color: rgb(245, 245, 245);
+    padding: 10px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+}
+
+.navBar img { 
+    height: 40px;
+}
+
+.homeButton button{ 
+    padding: 2px; 
+    margin: 2px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.loginButton button{ 
+    padding: 2px; 
+    margin: 2px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.registerButton button{ 
+    padding: 2px;
+    margin: 2px;
+    background-color: white;
+    border-radius: 2px;
+}
