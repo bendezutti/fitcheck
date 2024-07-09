@@ -11,4 +11,4 @@ const router = express.Router();
 
 //Post route that will allow a user to sign in
 
-module.export = router
+module.export = router;
