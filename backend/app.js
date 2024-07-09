@@ -22,7 +22,7 @@ app.use((error, req, res, next) => {
 
 
 
-const url = 'mongodb+srv://bendezutti:iamtheGoat100!@cluster0.lbxrfn2.mongodb.net/FitCheck?retryWrites=true&w=majority&appName=Cluster0'
+const url = 'mongodb+srv://bendezutti:lmdlawmdw@cluster0.lbxrfn2.mongodb.net/FitCheck?retryWrites=true&w=majority&appName=Cluster0'
 mongoose.connect(url).then(() => { 
     app.listen(3001);
 }).catch(err=> { 
