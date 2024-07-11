@@ -17,7 +17,7 @@ function App() {
         <Route path='/login' exact> <Login/> </Route>
         <Route path='/register' exact> <Register/> </Route>
         <Route path='/makefit' exact> <MakeFitPage/> </Route>
-        <Route path= '/myfits' exact> <MyFits/> </Route>
+        <Route path= '/fits' exact> <MyFits/> </Route>
         <Redirect to='/'/>
       </Switch>
     </main>

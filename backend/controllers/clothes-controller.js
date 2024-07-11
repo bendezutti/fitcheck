@@ -5,11 +5,11 @@ const Clothes = require('../models/clothesModel');
 const createFit = async(req, res, next) => { 
     const {shirtImage, pantsImage, shoesImage} = req.body;
 
-    const createdFit = new Clothes(
+    const createdFit = new Clothes({ 
         shirtImage,
         pantsImage,
         shoesImage
-    );
+});
 
     try{ 
         await createdFit.save();
@@ -21,7 +21,7 @@ const createFit = async(req, res, next) => {
 };
 
 
-const getClothesByUserID = async (req, res, next) => { 
+const getAllClothes = async (req, res, next) => { 
     const userID = req.params.uid; 
 
     let setClothes; 
@@ -39,5 +39,5 @@ const getClothesByUserID = async (req, res, next) => {
 };
 
 
-exports.getClothesByUserID = getClothesByUserID;
+exports.getAllClothes = getAllClothes;
 exports.createFit = createFit;
