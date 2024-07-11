@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { useForm } from '../../shared/hooks/form-hook';
+import {useDrag} from 'react-dnd'
 
 import "./Makefit.css";
 import ClothingSelector from "./ClothingSelector";
@@ -71,6 +72,7 @@ const MakeFit = () => {
         </div>
       </div>
 
+      {/*This component will retrieve the items from the ClothesUploaded pages */}
       <ClothingSelector />
 
       <div className='saveFit'>
