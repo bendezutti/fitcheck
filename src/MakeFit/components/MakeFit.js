@@ -1,16 +1,39 @@
 // Author: Benjamin DeZutti
 // Web Programming - Summer 2024
+import React, {useEffect, useState} from 'react'
 import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { useForm } from '../../shared/hooks/form-hook';
-import {useDrag} from 'react-dnd'
 
 import "./Makefit.css";
 import ClothingSelector from "./ClothingSelector";
 
 const MakeFit = () => {
-  const { isLoading, sendRequest } = useHttpClient();
+ 
+ const { isLoading, sendRequest } = useHttpClient();
+
+ const [loadShirts, setShirts] = useState();
+
+ const [loadPants, setPants] = useState();
+
+ const [loadShoes, setShoes] = useState();
+
+useEffect(() => { 
+  const fetchShirts = async ()=> { 
+  try{ 
+    const shirtResponse = await sendRequest('http://localhost:3001/api/clothes/')
+  
+    setShirts(shirtResponse.shirt)
+
+  } catch(err){ 
+    console.log(err)
+  }
+}
+  fetchShirts();
+}, [sendRequest]
+);
+
 
   const [formState, inputHandler] = useForm(
     {
@@ -30,8 +53,8 @@ const MakeFit = () => {
     false
   );
 
-  const history = useHistory();
 
+  const history = useHistory();
   const fitSave = async event => {
     event.preventDefault();
     try {
@@ -46,7 +69,7 @@ const MakeFit = () => {
         formData
       );
 
-      history.push('/:user/fits');
+      history.push('/home');
     } catch (error) {
       console.error(error);
     }

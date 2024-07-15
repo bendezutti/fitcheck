@@ -1,8 +1,10 @@
 import React from 'react'
-
+import UploadPantsImage from '../components/UploadPantsImage'
 const PantsUploadPage = () => {
   return (
-    <div>PantsUploadPage</div>
+    <div>
+      <UploadPantsImage/>
+    </div>
   )
 }
 

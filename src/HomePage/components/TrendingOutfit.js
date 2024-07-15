@@ -3,6 +3,7 @@
 
 import React from 'react'
 import "./TrendingOutfit.css"
+
 const TrendingOutfit = () => {
     return (
         <div className='trending'>
