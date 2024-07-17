@@ -4,19 +4,14 @@
    justify-content: center;
    padding: 2px;
    flex-direction: column;
-   height: 50vh;
+   height: 75vh;
 }
 
 
 .shirt, .pants, .shoes {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   border: solid black 1px; 
-   padding: 2px;
-   flex-direction: column;
-   width: 100px;
-   height: 100px;
+   width: 200px;
+   height: 200px;
+   object-fit: cover;
    margin: 10px;
 }
 

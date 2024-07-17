@@ -28,7 +28,58 @@
     border-radius: 2px;
 }
 
+.logoutButton button{ 
+    padding: 2px; 
+    margin: 2px;
+    background-color: white;
+    border-radius: 2px;
+}
+
 .registerButton button{ 
+    padding: 2px;
+    margin: 2px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.makeFitButton button{ 
+    padding: 2px;
+    margin: 2px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.addShirt button{ 
+    padding: 2px;
+    margin: 2px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.addShoes button{ 
+    padding: 2px;
+    margin: 2px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+
+.addPants button{ 
+    padding: 2px;
+    margin: 2px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+
+.myFitsButton button{ 
+    padding: 2px;
+    margin: 2px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.allFitsButton button{ 
     padding: 2px;
     margin: 2px;
     background-color: white;

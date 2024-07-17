@@ -1,80 +1,75 @@
-// Author: Benjamin DeZutti
-// Web Programming - Summer 2024
-import React, {useEffect, useState} from 'react'
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useHttpClient } from "../../shared/hooks/http-hook";
-import { useForm } from '../../shared/hooks/form-hook';
-
+import ChooseShirt from './ChooseShirt';
+import ChoosePants from './ChoosePants';
+import ChooseShoes from './ChooseShoes';
 import "./Makefit.css";
-import ClothingSelector from "./ClothingSelector";
 
 const MakeFit = () => {
- 
- const { isLoading, sendRequest } = useHttpClient();
+  const { sendRequest } = useHttpClient();
+  const [loadShirts, setShirts] = useState([]);
+  const [loadPants, setPants] = useState([]);
+  const [loadShoes, setShoes] = useState([]);
 
- const [loadShirts, setShirts] = useState();
-
- const [loadPants, setPants] = useState();
-
- const [loadShoes, setShoes] = useState();
-
-useEffect(() => { 
-  const fetchShirts = async ()=> { 
-  try{ 
-    const shirtResponse = await sendRequest('http://localhost:3001/api/clothes/')
-  
-    setShirts(shirtResponse.shirt)
-
-  } catch(err){ 
-    console.log(err)
-  }
-}
-  fetchShirts();
-}, [sendRequest]
-);
-
-
-  const [formState, inputHandler] = useForm(
-    {
-      shirt: {
-        value: '',
-        isValid: false
-      },
-      pants: {
-        value: '',
-        isValid: false
-      },
-      shoes: {
-        value: '',
-        isValid: false
+  useEffect(() => {
+    const fetchShirts = async () => {
+      try {
+        const shirtResponse = await sendRequest('http://localhost:3001/api/clothes/shirts');
+        setShirts(shirtResponse.shirt);
+      } catch (err) {
+        console.error('Failed to fetch shirts:', err);
       }
-    },
-    false
-  );
+    };
 
+    const fetchPants = async () => {
+      try {
+        const pantsResponse = await sendRequest('http://localhost:3001/api/clothes/pants');
+        setPants(pantsResponse.pants);
+      } catch (err) {
+        console.error('Failed to fetch pants:', err);
+      }
+    };
+
+    const fetchShoes = async () => {
+      try {
+        const shoesResponse = await sendRequest('http://localhost:3001/api/clothes/shoes');
+        setShoes(shoesResponse.shoes);
+      } catch (err) {
+        console.error('Failed to fetch shoes:', err);
+      }
+    };
+
+    fetchShirts();
+    fetchPants();
+    fetchShoes();
+  }, [sendRequest]);
 
   const history = useHistory();
+
   const fitSave = async event => {
     event.preventDefault();
     try {
-      const formData = new FormData();
-      formData.append('shirt', formState.inputs.shirt.value);
-      formData.append('pants', formState.inputs.pants.value);
-      formData.append('shoes', formState.inputs.shoes.value);
 
+      const fitData = {
+        shirts: loadShirts.map(shirt => shirt.id), 
+        pants: loadPants.map(pants => pants.id),
+        shoes: loadShoes.map(shoes => shoes.id)
+      };
+  
       await sendRequest(
-        'http://localhost:3001/api/makefit',
+        'http://localhost:3001/api/clothes/myfits',
         'POST',
-        formData
+        JSON.stringify(fitData),
+        { 'Content-Type': 'application/json' }
       );
-
+  
       history.push('/home');
     } catch (error) {
-      console.error(error);
+      console.error('Failed to save fit:', error);
     }
-  }
-
+  };
+  
   return (
     <div>
       <div className="fit">
@@ -83,28 +78,25 @@ useEffect(() => {
         </div>
 
         <div className="shirt">
-          <p> Shirt </p>
+        <ChooseShirt items={loadShirts} />
         </div>
 
         <div className="pants">
-          <p> Pants </p>
+        <ChoosePants items={loadPants}/> 
         </div>
 
         <div className="shoes">
-          <p> Shoes </p>
+          <ChooseShoes items={loadShoes}/> 
         </div>
       </div>
 
-      {/*This component will retrieve the items from the ClothesUploaded pages */}
-      <ClothingSelector />
 
       <div className='saveFit'>
-        <Link to='/fits'> 
-        <button onClick={fitSave} >
+        <button onClick={fitSave}>
           Save
         </button>
-        </Link>
       </div>
+
     </div>
   );
 }
