@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHttpClient } from "../../shared/hooks/http-hook";
-import "./Makefit.css";
+import "./AllItems.css";
 
 const AllItems = () => {
   const { sendRequest } = useHttpClient();
@@ -56,7 +56,7 @@ const AllItems = () => {
                 <div className="items">
                   {loadShirts.map((shirts) => (
                     <div key={shirts.id} className="userItem">
-                      <img src={`localhost:3001/${shirts.shirtsImage}`} alt='' />
+                      <img src={`http://localhost:3001/${shirts.shirtImage}`} alt='' />
                     </div>
                   ))}
                 </div>
@@ -67,7 +67,7 @@ const AllItems = () => {
                 <div className="items">
                   {loadPants.map((pants) => (
                     <div key={pants.id} className="userItem">
-                      <img src={`localhost:3001/${pants.pantsImage}`} alt='' />
+                      <img src={`http://localhost:3001/${pants.pantsImage}`} alt='' />
                     </div>
                   ))}
                 </div>
@@ -78,11 +78,10 @@ const AllItems = () => {
                 <div className="items">
                   {loadShoes.map((shoes) => (
                     <div key={shoes.id} className="outfit-item">
-                      <img src={`localhost:3001/${shoes.shoesImage}`} alt='' />
+                      <img src={`http://localhost:3001/${shoes.shoesImage}`} alt='' />
                     </div>
                   ))}
                 </div>
-                
               </div>
             </div>
           </div>
