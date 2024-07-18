@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { useHttpClient } from "../../shared/hooks/http-hook";
-import ChooseShirt from './ChooseShirt';
-import ChoosePants from './ChoosePants';
-import ChooseShoes from './ChooseShoes';
 import "./Makefit.css";
 
 const MakeFit = () => {
@@ -16,6 +12,7 @@ const MakeFit = () => {
     const fetchShirts = async () => {
       try {
         const shirtResponse = await sendRequest('http://localhost:3001/api/clothes/shirts');
+        console.log('Shirts:', shirtResponse.shirt);
         setShirts(shirtResponse.shirt);
       } catch (err) {
         console.error('Failed to fetch shirts:', err);
@@ -25,6 +22,7 @@ const MakeFit = () => {
     const fetchPants = async () => {
       try {
         const pantsResponse = await sendRequest('http://localhost:3001/api/clothes/pants');
+        console.log('Pants:', pantsResponse.pants);
         setPants(pantsResponse.pants);
       } catch (err) {
         console.error('Failed to fetch pants:', err);
@@ -34,6 +32,7 @@ const MakeFit = () => {
     const fetchShoes = async () => {
       try {
         const shoesResponse = await sendRequest('http://localhost:3001/api/clothes/shoes');
+        console.log('Shoes:', shoesResponse.shoes);
         setShoes(shoesResponse.shoes);
       } catch (err) {
         console.error('Failed to fetch shoes:', err);
@@ -45,58 +44,51 @@ const MakeFit = () => {
     fetchShoes();
   }, [sendRequest]);
 
-  const history = useHistory();
-
-  const fitSave = async event => {
-    event.preventDefault();
-    try {
-
-      const fitData = {
-        shirts: loadShirts.map(shirt => shirt.id), 
-        pants: loadPants.map(pants => pants.id),
-        shoes: loadShoes.map(shoes => shoes.id)
-      };
-  
-      await sendRequest(
-        'http://localhost:3001/api/clothes/myfits',
-        'POST',
-        JSON.stringify(fitData),
-        { 'Content-Type': 'application/json' }
-      );
-  
-      history.push('/home');
-    } catch (error) {
-      console.error('Failed to save fit:', error);
-    }
-  };
-  
   return (
-    <div>
+    <div className="container">
       <div className="fit">
-        <div>
-          <h1> Put the fit together! </h1>
-        </div>
-
-        <div className="shirt">
-        <ChooseShirt items={loadShirts} />
-        </div>
-
-        <div className="pants">
-        <ChoosePants items={loadPants}/> 
-        </div>
-
-        <div className="shoes">
-          <ChooseShoes items={loadShoes}/> 
+        <h1>All Fits</h1>
+        <div className="outfit-card">
+          <div className="item-card">
+            <div className="card-body">
+              <h2>Outfit</h2>
+              <div className="outfit-section">
+                <h3>Shirts</h3>
+                <div className="outfit-items">
+                  {loadShirts.map((item) => (
+                    <div key={item.id} className="outfit-item">
+                      <img src={item.imageUrl} alt={item.name} />
+                      <p>{item.name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="outfit-section">
+                <h3>Pants</h3>
+                <div className="outfit-items">
+                  {loadPants.map((item) => (
+                    <div key={item.id} className="outfit-item">
+                      <img src={item.imageUrl} alt={item.name} />
+                      <p>{item.name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="outfit-section">
+                <h3>Shoes</h3>
+                <div className="outfit-items">
+                  {loadShoes.map((item) => (
+                    <div key={item.id} className="outfit-item">
+                      <img src={item.imageUrl} alt={item.name} />
+                      <p>{item.name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-
-      <div className='saveFit'>
-        <button onClick={fitSave}>
-          Save
-        </button>
-      </div>
-
     </div>
   );
 }

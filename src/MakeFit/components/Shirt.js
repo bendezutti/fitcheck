@@ -1,5 +1,4 @@
 import React from 'react';
-import './Shirt.css';
 
 const Shirt = props => {
   return (

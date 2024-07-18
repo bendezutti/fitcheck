@@ -40,6 +40,9 @@ const UploadShoeImage = () => {
 
   return (
     <div>
+      <div> 
+        <h1> Upload Shoes </h1>
+      </div>
       <form onSubmit={submitHandler}>
         <ImageUpload id="image" onInput={inputHandler} />
         <button type="submit">

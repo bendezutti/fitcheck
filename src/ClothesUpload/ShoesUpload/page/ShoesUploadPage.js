@@ -3,7 +3,7 @@ import UploadShoeImage from '../components/UploadShoesImage'
 
 const ShoesUploadPage = () => {
   return (
-    <div>
+    <div className='page'>
         <UploadShoeImage/>
     </div>
   )

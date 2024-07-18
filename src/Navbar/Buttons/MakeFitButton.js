@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 const MakeFitButton = () => {
   return (
     <div>
-      <Link to='/makefit'> 
-      <button> Make Fit </button>
+      <Link to='/allfits'> 
+      <button> All Fits </button>
       </Link>
     </div>
   )

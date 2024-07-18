@@ -3,13 +3,14 @@ import ImageUpload from '../../../shared/components/ImageUpload';
 import { useHistory } from 'react-router-dom';
 import { useHttpClient } from '../../../shared/hooks/http-hook';
 import { useForm } from '../../../shared/hooks/form-hook';
+import './UploadShirtImage.css'
 
 const UploadShirtImage = () => {
   const { isLoading, error, sendRequest } = useHttpClient();
 
   const [formState, inputHandler] = useForm(
     {
-      image: { 
+      image: {
         value: '',
         isValid: false
       }
@@ -40,12 +41,17 @@ const UploadShirtImage = () => {
 
   return (
     <div>
-      <form onSubmit={submitHandler}>
-        <ImageUpload id="image" onInput={inputHandler} />
-        <button type="submit">
-          Upload Image
-        </button>
-      </form>
+      <div className='page'>
+        <h1> Upload Shirt </h1>
+      </div>
+      <div className='uploadShirt'>
+        <form onSubmit={submitHandler}>
+          <ImageUpload id="image" onInput={inputHandler} />
+          <button type="submit" className='uploadButton'>
+            Upload Image
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

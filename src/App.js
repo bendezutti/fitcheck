@@ -7,8 +7,6 @@ import Navbar from './Navbar/Navbar'
 import Homepage from './HomePage/page/Homepage'
 import Login from './Login/page/Login'
 import Register from './Register/page/Register'
-import MakeFitPage from './MakeFit/page/MakeFitPage'
-import MyFits from './MyFits/page/MyFits'
 import PantsUploadPage from './ClothesUpload/PantsUpload/page/PantsUploadPage'
 import ShirtUploadPage from './ClothesUpload/ShirtUpload/page/ShirtUploadPage'
 import ShoesUploadPage from './ClothesUpload/ShoesUpload/page/ShoesUploadPage'
@@ -43,7 +41,7 @@ const App = () => {
         <Route path="/" exact>
           <Homepage />
         </Route>
-        <Route path="/makefit" exact>
+        <Route path="/allfits" exact>
           <MakeFit />
         </Route>
         <Route path="/uploadshirts" exact>
@@ -55,14 +53,6 @@ const App = () => {
         <Route path="/uploadshoes" exact>
           <ShoesUploadPage/>
         </Route>
-        <Route path="/myfits" exact>
-          <MyFits/>
-        </Route>
-        <Route path="/makefit" exact> 
-        <MakeFit/>
-        </Route>
-
-
         <Redirect to="/" />
       </Switch>
     );

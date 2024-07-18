@@ -86,17 +86,15 @@ const getShoes = async (req, res, next) => {
 
 
 const createFit = async (req, res, next) => {
-    const { shirts, pants, shoes } = req.body;
+   
   
     const createdFit = new Clothes({
-      shirtImage: shirts,
-      pantsImage: pants,
-      shoeImage: shoes
+      imageURL: req.file.path
     });
   
     try {
       await createdFit.save();
-      res.status(201).json({ clothes: createdFit });
+      res.status(201).json({ imageURL : req.file.path });
     } catch (err) {
       return res.status(500).json({ message: "Creating Fit failed, clothes-controller issue." });
     }

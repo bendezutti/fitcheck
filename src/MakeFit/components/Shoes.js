@@ -1,5 +1,4 @@
 import React from 'react';
-import './Shoes.css';
 
 const Shoes = props => {
   return (

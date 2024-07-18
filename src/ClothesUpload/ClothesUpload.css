@@ -1,0 +1,15 @@
+.page{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.uploadShirt{ 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35vh;
+}
+
+
