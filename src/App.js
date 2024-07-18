@@ -10,39 +10,34 @@ import Register from './Register/page/Register'
 import PantsUploadPage from './ClothesUpload/PantsUpload/page/PantsUploadPage'
 import ShirtUploadPage from './ClothesUpload/ShirtUpload/page/ShirtUploadPage'
 import ShoesUploadPage from './ClothesUpload/ShoesUpload/page/ShoesUploadPage'
-import MakeFit from './MakeFit/components/MakeFit'
+import AllItems from './MakeFit/components/AllItems'
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  //MANAGE token session state
   const [token, setToken] = useState(false)
 
-  //pass token as callback
   const login = useCallback((token) => {
     setIsLoggedIn(true);
-    //set the token state
     setToken(token);
   }, []);
 
 
-  //do same TOKEN state for logout
   const logout = useCallback((token) => {
     setIsLoggedIn(false);
     setToken(null);
   }, []);
 
   let routes;
-  //Checking if TOKEN is set in context
-  //if (isLoggedIn) {
+
   if (token) {
     routes = (
       <Switch>
         <Route path="/" exact>
           <Homepage />
         </Route>
-        <Route path="/allfits" exact>
-          <MakeFit />
+        <Route path="/allitems" exact>
+          <AllItems />
         </Route>
         <Route path="/uploadshirts" exact>
           <ShirtUploadPage/>

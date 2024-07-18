@@ -6,49 +6,38 @@
  }
  
  .fit {
-   width: 100%;
-   max-width: 800px;
+   width: auto;
+   max-width: auto;
  }
  
- .outfit-card {
-   margin-top: 20px;
-   width: 100%;
-   border: 1px solid #ccc;
-   border-radius: 8px;
-   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
- }
- 
- .item-card {
-   padding: 20px;
- }
- 
- .card-body {
+
+ .body {
    display: flex;
    flex-direction: column;
  }
  
- .outfit-section {
+ .item-sections {
    margin-bottom: 20px;
  }
  
- .outfit-items {
+ .items {
    display: flex;
    flex-wrap: wrap;
    gap: 10px;
  }
  
- .outfit-item {
+ .userItem {
    display: flex;
    flex-direction: column;
    align-items: center;
    width: 100px;
  }
  
- .outfit-item img {
-   width: 50px;
-   height: 50px;
+ .userItem img {
+   width: 100px;
+   height: 100px;
    margin-bottom: 10px;
    object-fit: cover;
-   border-radius: 4px;
+   border-radius: 1px;
  }
  

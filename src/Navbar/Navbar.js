@@ -8,9 +8,9 @@ import './Navbar.css'
 import RegisterButton from './Buttons/RegisterButton'
 import { AuthContext } from '../shared/context/auth-context'
 import LogoutButton from './Buttons/LogoutButton'
-import MakeFitButton from './Buttons/MakeFitButton'
+import AllItemsButton from './Buttons/AllItemsButton'
 import AddShirtButton from './Buttons/AddShirtButton'
-import AddPantsButton from './AddPantsButton'
+import AddPantsButton from './Buttons/AddPantsButton'
 import AddShoesButton from './Buttons/AddShoesButton'
 
 const Navbar = () => {
@@ -37,8 +37,8 @@ const Navbar = () => {
 
 
       {auth.isLoggedIn && (
-        <div className='makeFitButton'>
-          <MakeFitButton />
+        <div className='allItems'>
+          <AllItemsButton />
         </div>
       )}
 

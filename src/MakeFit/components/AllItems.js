@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import "./Makefit.css";
 
-const MakeFit = () => {
+const AllItems = () => {
   const { sendRequest } = useHttpClient();
   const [loadShirts, setShirts] = useState([]);
   const [loadPants, setPants] = useState([]);
@@ -46,44 +46,43 @@ const MakeFit = () => {
 
   return (
     <div className="container">
+        <h1> All Clothing Items </h1>
       <div className="fit">
-        <h1>All Fits</h1>
-        <div className="outfit-card">
-          <div className="item-card">
-            <div className="card-body">
-              <h2>Outfit</h2>
-              <div className="outfit-section">
+        <div>
+          <div>
+            <div>
+              <div>
                 <h3>Shirts</h3>
-                <div className="outfit-items">
-                  {loadShirts.map((item) => (
-                    <div key={item.id} className="outfit-item">
-                      <img src={item.imageUrl} alt={item.name} />
-                      <p>{item.name}</p>
+                <div className="items">
+                  {loadShirts.map((shirts) => (
+                    <div key={shirts.id} className="userItem">
+                      <img src={`localhost:3001/${shirts.shirtsImage}`} alt='' />
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="outfit-section">
+
+              <div>
                 <h3>Pants</h3>
-                <div className="outfit-items">
-                  {loadPants.map((item) => (
-                    <div key={item.id} className="outfit-item">
-                      <img src={item.imageUrl} alt={item.name} />
-                      <p>{item.name}</p>
+                <div className="items">
+                  {loadPants.map((pants) => (
+                    <div key={pants.id} className="userItem">
+                      <img src={`localhost:3001/${pants.pantsImage}`} alt='' />
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="outfit-section">
+
+              <div>
                 <h3>Shoes</h3>
-                <div className="outfit-items">
-                  {loadShoes.map((item) => (
-                    <div key={item.id} className="outfit-item">
-                      <img src={item.imageUrl} alt={item.name} />
-                      <p>{item.name}</p>
+                <div className="items">
+                  {loadShoes.map((shoes) => (
+                    <div key={shoes.id} className="outfit-item">
+                      <img src={`localhost:3001/${shoes.shoesImage}`} alt='' />
                     </div>
                   ))}
                 </div>
+                
               </div>
             </div>
           </div>
@@ -93,4 +92,4 @@ const MakeFit = () => {
   );
 }
 
-export default MakeFit;
+export default AllItems;
