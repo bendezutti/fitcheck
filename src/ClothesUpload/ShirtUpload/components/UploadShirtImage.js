@@ -6,7 +6,7 @@ import { useForm } from '../../../shared/hooks/form-hook';
 import './UploadShirtImage.css'
 
 const UploadShirtImage = () => {
-  const { isLoading, error, sendRequest } = useHttpClient();
+  const { sendRequest } = useHttpClient();
 
   const [formState, inputHandler] = useForm(
     {
@@ -32,10 +32,9 @@ const UploadShirtImage = () => {
         formData
       );
 
-      history.push('/pants');
+      history.push('/allitems');
     } catch (err) {
       console.error('Request error:', err);
-      // Handle error appropriately
     }
   };
 

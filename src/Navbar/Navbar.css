@@ -85,3 +85,11 @@
     background-color: white;
     border-radius: 2px;
 }
+
+.logo img {
+    width: 10px;
+    height: 10px;
+    object-fit: cover;
+    border-radius: 1px;
+  }
+  

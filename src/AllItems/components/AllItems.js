@@ -1,3 +1,6 @@
+//Author: Ben DeZutti
+//Class: Web Programming
+
 import React, { useEffect, useState } from 'react';
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import "./AllItems.css";
@@ -47,7 +50,7 @@ const AllItems = () => {
   return (
     <div className="container">
         <h1> All Clothing Items </h1>
-      <div className="fit">
+      <div className="allItems">
         <div>
           <div>
             <div>
@@ -77,8 +80,8 @@ const AllItems = () => {
                 <h3>Shoes</h3>
                 <div className="items">
                   {loadShoes.map((shoes) => (
-                    <div key={shoes.id} className="outfit-item">
-                      <img src={`http://localhost:3001/${shoes.shoesImage}`} alt='' />
+                    <div key={shoes.id} className="userItem">
+                      <img src={`http://localhost:3001/${shoes.shoeImage}`} alt='' />
                     </div>
                   ))}
                 </div>

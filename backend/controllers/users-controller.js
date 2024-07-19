@@ -1,9 +1,8 @@
-const { validationResult } = require('express-validator');
+//Author: Ben DeZutti
+//Class: Web Programming
 
-//use a library that will help with hashing passwords
 const bcrypt = require('bcryptjs')
 
-//import jsonwebtoken (JWT) to generate tokens
 const jwt = require('jsonwebtoken')
 
 const User = require('../models/usersModel');
@@ -20,11 +19,8 @@ const getUsers = async (req, res, next) => {
 
 
 const signup = async (req, res, next) => {
-  //   const errors = validationResult(req);
-  //   if (!errors.isEmpty()) {
-  //     return res.status(422).json( { message: 'Invalid inputs please try again'  });
-  //   }
-  const { name, email, password } = req.body;
+
+  const { email, password } = req.body;
 
   let existingUser;
   try {
@@ -37,21 +33,15 @@ const signup = async (req, res, next) => {
     return res.status(422).json({ message: 'User already exists' });
   }
 
-  //generate a hashed password
   let hashedPassword;
-  //HASH Method 
-  //1) String to hash
-  //2) SALT or number of salting rounds (influences hash strength)
-  //Note : Value of 12, ideally hash cannot be revered engineered 
+ 
   try {
     hashedPassword = await bcrypt.hash(password, 12);
   } catch (err) {
     return res.status(500).json({message: 'Could not create user, please try again'})
   }
 
-  //STEP 1: lets add the image that is uploaded when creating (registering) a new User
   const createdUser = new User({
-    name,
     email,
     password: hashedPassword,
   });
@@ -61,10 +51,10 @@ const signup = async (req, res, next) => {
   try {
     token = jwt.sign(
       {
-      userId: createdUser.id, //user at which the token belongs to
+      userId: createdUser.id,
       email: createdUser.email
       },
-      'secret_key_do_not_share',
+      'secret_key',
     { 
       expiresIn: '1h'
     }
@@ -96,7 +86,7 @@ const login = async (req, res, next) => {
   try {
     existingUser = await User.findOne({ email: email });
   } catch (err) {
-    return res.status(500).json({ message: 'Login failed' });
+    return res.status(500).json({ message: 'Login failed.' });
   }
 
 
@@ -110,7 +100,7 @@ const login = async (req, res, next) => {
   try{ 
     isValidPassword = await bcrypt.compare(password, existingUser.password)
   } catch(err){ 
-    return res.status(500).json({message: 'Login failed! Check the credentials'})
+    return res.status(500).json({message: 'Login failed! Check the credentials.'})
   }
 
   if (!isValidPassword){ 
@@ -125,13 +115,13 @@ const login = async (req, res, next) => {
         userId: existingUser.id,
         email: existingUser.email,
       }, 
-      'secret_key_do_not_share', 
+      'secret_key', 
       {
         expiresIn: '1h'
       }
     )
   } catch (error) {
-    res.status(500).json({message: 'Could not login, please try again'})
+    res.status(500).json({message: 'Could not login, please try again.'})
   }
   
   res.json(

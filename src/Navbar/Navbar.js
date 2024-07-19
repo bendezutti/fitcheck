@@ -12,12 +12,17 @@ import AllItemsButton from './Buttons/AllItemsButton'
 import AddShirtButton from './Buttons/AddShirtButton'
 import AddPantsButton from './Buttons/AddPantsButton'
 import AddShoesButton from './Buttons/AddShoesButton'
+import ratemyfit_logo from '../Images/Logo/ratemyfit_logo.png';
 
 const Navbar = () => {
   const auth = useContext(AuthContext)
 
   return (
     <div className='navBar'>
+
+      <div> 
+        <img src ={ratemyfit_logo} alt=''/>
+      </div>
       <div className='homeButton'>
         <HomeButton />
       </div>

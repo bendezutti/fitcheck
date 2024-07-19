@@ -1,21 +1,19 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
+import {useHistory} from 'react-router-dom'
 import Input from '../../shared/components/Input';
 import { useForm } from '../../shared/hooks/form-hook';
 import { AuthContext } from '../../shared/context/auth-context';
-import './Register.css';
 import { VALIDATOR_REQUIRE, VALIDATOR_EMAIL, VALIDATOR_MINLENGTH } from '../../shared/util/validators';
 import { useHttpClient } from '../../shared/hooks/http-hook';
+import './Register.css';
+
 
 const Register = () => {
   const auth = useContext(AuthContext);
   const { isLoading, sendRequest } = useHttpClient();
 
-  const [formState, inputHandler, setFormData] = useForm(
+  const [formState, inputHandler] = useForm(
     {
-      name: {
-        value: '',
-        isValid: false
-      },
       email: {
         value: '',
         isValid: false
@@ -28,51 +26,40 @@ const Register = () => {
     false
   );
 
+  const history = useHistory();
+
   const authSubmitHandler = async event => {
     event.preventDefault();
-
-    // Print form data to console
-    console.log('Form Data:', formState.inputs);
-
     try {
-      const formData = new FormData();
-      formData.append('name', formState.inputs.name.value);
-      formData.append('email', formState.inputs.email.value);
-      formData.append('password', formState.inputs.password.value);
-
-      const responseData = await sendRequest(
+       await sendRequest(
         'http://localhost:3001/api/users/signup',
         'POST',
-        formData
+        JSON.stringify({
+          email: formState.inputs.email.value,
+          password: formState.inputs.password.value
+        }),
+        {
+          'Content-Type': 'application/json'
+        }
       );
-
-      console.log('Response Data:', responseData);
 
       auth.login();
     } catch (err) {
       console.log('Error:', err);
     }
+    history.push('/login')
   };
 
   return (
     <div className="authentication">
-      <h2>Please Register</h2>
+      <h2> Register</h2>
       <form onSubmit={authSubmitHandler}>
-        <Input
-          element="input"
-          id="name"
-          type="text"
-          label="Your Name"
-          validators={[VALIDATOR_REQUIRE()]}
-          errorText="Please enter a name."
-          onInput={inputHandler}
-        />
         <Input
           element="input"
           id="email"
           type="email"
           label="E-Mail"
-          validators={[VALIDATOR_EMAIL()]}
+          validators={[VALIDATOR_EMAIL(), VALIDATOR_REQUIRE()]}
           errorText="Please enter a valid email address."
           onInput={inputHandler}
         />
@@ -81,11 +68,11 @@ const Register = () => {
           id="password"
           type="password"
           label="Password"
-          validators={[VALIDATOR_MINLENGTH(5)]}
-          errorText="Please enter a valid password, at least 5 characters."
+          validators={[VALIDATOR_MINLENGTH(6), VALIDATOR_REQUIRE()]}
+          errorText="Please enter a valid password, at least 6 characters."
           onInput={inputHandler}
         />
-        <button type="submit" disabled={!formState.isValid}>
+        <button type="submit" disabled={isLoading}>
           Register
         </button>
       </form>

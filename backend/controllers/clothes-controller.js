@@ -1,6 +1,5 @@
-
-const Clothes = require('../models/clothesModel');
-
+//Author: Ben DeZutti
+//Class: Web Programming
 
 const Shirt = require('../models/shirtsModel')
 
@@ -19,7 +18,7 @@ const addShirt = async (req, res, next) => {
     try {
         await createdShirt.save();
     } catch (err) {
-        return res.status(500).json({ message: "Creating Shirt failed, clothes-controller issue." })
+        return res.status(500).json({ message: "Creating Shirt failed." })
     };
 
     res.status(201).json({ shirt: createdShirt });
@@ -34,7 +33,7 @@ const addPants = async (req, res, next) => {
     try {
         await createdPants.save();
     } catch (err) {
-        return res.status(500).json({ message: "Creating Pants failed, clothes-controller issue." })
+        return res.status(500).json({ message: "Creating Pants failed." })
     };
 
     res.status(201).json({ pants: createdPants });
@@ -48,7 +47,7 @@ const addShoes = async (req, res, next) => {
     try {
         await createdShoes.save();
     } catch (err) {
-        return res.status(500).json({ message: "Creating Shoes failed, clothes-controller issue." })
+        return res.status(500).json({ message: "Creating Shoes failed." })
     };
 
     res.status(201).json({ shoes: createdShoes });
@@ -85,39 +84,11 @@ const getShoes = async (req, res, next) => {
 };
 
 
-const createFit = async (req, res, next) => {
-   
-  
-    const createdFit = new Clothes({
-      imageURL: req.file.path
-    });
-  
-    try {
-      await createdFit.save();
-      res.status(201).json({ imageURL : req.file.path });
-    } catch (err) {
-      return res.status(500).json({ message: "Creating Fit failed, clothes-controller issue." });
-    }
-  };
-  
-  const getFit = async (req, res, next) => {
-    let fit;
-    try {
-        fit = await Clothes.find();
-    } catch (err) {
-        return res.status(500).json({ message: 'Fetching shoes has failed, please try again later' });
-    }
-    res.json({ fit: fit.map(fit => fit.toObject({ getters: true })) });
-};
-
-
   
 
 exports.addShirt = addShirt;
 exports.addPants = addPants;
 exports.addShoes = addShoes;
-exports.createFit = createFit;
-exports.getFit = getFit;
 exports.getShirts = getShirts;
 exports.getPants = getPants;
 exports.getShoes = getShoes;

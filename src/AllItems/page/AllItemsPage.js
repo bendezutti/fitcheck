@@ -2,11 +2,11 @@
 // Web Programming - Summer 2024
 
 import React from 'react'
-import MakeFit from '../components/MakeFit';
+import AllItems from '../components/AllItems';
 export const MakeFitPage = () => {
     return (
         <div>
-            <MakeFit/>
+            <AllItems/>
         </div>
     )
 }

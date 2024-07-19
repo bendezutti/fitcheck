@@ -1,13 +1,12 @@
-// Author: Benjamin DeZutti
-// Web Programming - Summer 2024
+// Author: Ben DeZutti
+// Class: Web Programming
 
 import React from 'react'
-import TrendingOutfit from '../components/TrendingOutfit'
-
+import Logo from '../components/Logo'
 const Homepage = () => {
   return (
     <div>
-      <TrendingOutfit />
+      <Logo />
     </div>
   )
 }

@@ -1,3 +1,6 @@
+//Author: Ben DeZutti
+//Class: Web Programming
+
 const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;

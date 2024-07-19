@@ -1,3 +1,6 @@
+//Author: Ben DeZutti
+//Class: Web Programming
+
 import React from 'react';
 import ImageUpload from '../../../shared/components/ImageUpload';
 import { useHistory } from 'react-router-dom';
@@ -5,7 +8,7 @@ import { useHttpClient } from '../../../shared/hooks/http-hook';
 import { useForm } from '../../../shared/hooks/form-hook';
 
 const UploadShoeImage = () => {
-  const { isLoading, error, sendRequest } = useHttpClient();
+  const { sendRequest } = useHttpClient();
 
   const [formState, inputHandler] = useForm(
     {
@@ -31,10 +34,9 @@ const UploadShoeImage = () => {
         formData
       );
 
-      history.push('/myfits');
+      history.push('/allitems');
     } catch (err) {
       console.error('Request error:', err);
-      // Handle error appropriately
     }
   };
 

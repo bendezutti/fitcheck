@@ -1,15 +1,19 @@
+//Author: Ben DeZutti
+//Class: Web Programming
+
 import React from 'react';
 import ImageUpload from '../../../shared/components/ImageUpload';
 import { useHistory } from 'react-router-dom';
 import { useHttpClient } from '../../../shared/hooks/http-hook';
 import { useForm } from '../../../shared/hooks/form-hook';
+import './UploadPantsImage.css'
 
-const UploadPantsImage = () => {
-  const { isLoading, error, sendRequest } = useHttpClient();
+const UploadShirtImage = () => {
+  const { sendRequest } = useHttpClient();
 
   const [formState, inputHandler] = useForm(
     {
-      image: { 
+      image: {
         value: '',
         isValid: false
       }
@@ -31,23 +35,27 @@ const UploadPantsImage = () => {
         formData
       );
 
-      history.push('/shoes');
+      history.push('/allitems');
     } catch (err) {
       console.error('Request error:', err);
-      // Handle error appropriately
     }
   };
 
   return (
     <div>
-      <form onSubmit={submitHandler}>
-        <ImageUpload id="image" onInput={inputHandler} />
-        <button type="submit">
-          Upload Image
-        </button>
-      </form>
+      <div className='page'>
+        <h1> Upload Pants </h1>
+      </div>
+      <div className='uploadPants'>
+        <form onSubmit={submitHandler}>
+          <ImageUpload id="image" onInput={inputHandler} />
+          <button type="submit" className='uploadButton'>
+            Upload Image
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
 
-export default UploadPantsImage;
+export default UploadShirtImage;

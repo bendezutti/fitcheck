@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+}
+
+.logo img {
+    display: flex;
+    height: 400px;
+    width: 400px;
+    margin-left: 100px;
+    align-items: center;
+}
+
+.font1 {
+    font-size: 65px;
+    margin-left: 20px;
+}
+
+
+.font2 {
+    display: flex;
+    justify-content: center;
+    font-size: 65px;
+    margin-left: 500px;
+}
+
+
+.font3 {
+    font-size: 65px;
+    margin-left: 700px;
+}
+
+
+.font4 {
+    display: flex;
+    font-size: 65px;
+    margin-left: 100px; 
+}
+
+.font5 {
+    display: flex;
+    font-size: 65px;
+    margin-left: 100px; 
+    justify-content: center;
+    margin-top: 10px;
+}
+
+
+

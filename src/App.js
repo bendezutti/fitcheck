@@ -10,7 +10,7 @@ import Register from './Register/page/Register'
 import PantsUploadPage from './ClothesUpload/PantsUpload/page/PantsUploadPage'
 import ShirtUploadPage from './ClothesUpload/ShirtUpload/page/ShirtUploadPage'
 import ShoesUploadPage from './ClothesUpload/ShoesUpload/page/ShoesUploadPage'
-import AllItems from './MakeFit/components/AllItems'
+import AllItems from './AllItems/components/AllItems'
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
